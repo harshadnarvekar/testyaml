@@ -71,7 +71,7 @@ pipelines:
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
-       branch: feature12
+       branch: master
        destination: dir-prod1
       service-multiplier:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
@@ -91,7 +91,7 @@ pipelines:
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
-       branch: feature12
+       branch: master
        destination: dir-murray1     
       service-multiplier:      
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
@@ -111,7 +111,7 @@ pipelines:
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
-       branch: feature12
+       branch: master
        destination: dir-preprod1     
       service-multiplier:      
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
