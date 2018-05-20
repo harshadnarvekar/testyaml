@@ -62,7 +62,7 @@ environments:
 
 # service-multiplier-production.yml
 pipelines:
-  service-multiplier-production:
+  "service-multiplier-production":
     group: group1
     environment_variables:
       DEPLOYMENT: testing
@@ -80,7 +80,7 @@ pipelines:
 
 # service-multiplier-murray.yml
 pipelines:
-  service-multiplier-murray:
+  "service-multiplier-murray":
     group: group1
     environment_variables:
       DEPLOYMENT: testing
@@ -97,7 +97,7 @@ pipelines:
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 pipelines:
-  service-multiplier-yarra:
+  "service-multiplier-yarra":
     group: group1
     environment_variables:
       DEPLOYMENT: testing
