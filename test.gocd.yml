@@ -21,13 +21,13 @@ common:
 #=========================================================
 environments:
   uat-yarra:  &uat-yarra #  UAT Yarra
-    # environment_variables:
+    environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'UAT-Yarra'
       AWS_PROFILE: 'test'
 #=========================================================
   uat-murray: &uat-murray  # UAT Murray
-    # environment_variables:
+    environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'UAT-Murray'
       AWS_PROFILE: 'test'
@@ -39,19 +39,19 @@ environments:
       AWS_PROFILE: 'test'
 #=========================================================
   production: &production
-    # environment_variables:
+    environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'Production'
       AWS_PROFILE: 'test'
 #=========================================================
   tools: &tools
-    # environment_variables:
+    environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'Tools'
       AWS_PROFILE: 'test'
 #=========================================================
   productiondr: &productiondr
-    # environment_variables:
+    environment_variables:
       <<: *docker_repo
       REGION: 'ap-northeast-1'
       ENVIRONMENT: 'ProductionDR'
@@ -81,10 +81,7 @@ pipelines:
 # service-multiplier-production.yml
   "service-multiplier-production":
     group: group1
-    environment_variables:
-      DEPLOYMENT: testing
-      FOO: bar
-      << : *production
+    << : *production
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
@@ -101,10 +98,7 @@ pipelines:
 # service-multiplier-yarra.yml
   "service-multiplier-murray":
     group: group1
-    environment_variables:
-      DEPLOYMENT: testing
-      FOO: bar
-      << : *uat-murray
+    << : *uat-murray
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
@@ -121,10 +115,7 @@ pipelines:
 # service-multiplier-yarra.yml
   "service-multiplier-yarra":
     group: group1
-    environment_variables:
-      DEPLOYMENT: testing
-      FOO: bar
-      << : *uat-yarra
+    << : *uat-yarra
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
