@@ -38,7 +38,7 @@ environments:
       ENVIRONMENT: 'PreProduction'
       AWS_PROFILE: 'test'
 #=========================================================
-  production:
+  production: &production
     # environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'Production'
@@ -50,7 +50,7 @@ environments:
       ENVIRONMENT: 'Tools'
       AWS_PROFILE: 'test'
 #=========================================================
-  productiondr:
+  productiondr: &productiondr
     # environment_variables:
       <<: *docker_repo
       REGION: 'ap-northeast-1'
