@@ -33,7 +33,7 @@ environments:
       AWS_PROFILE: 'test'
 #=========================================================
   preproduction: &preproduction #  PreProduction
-    # environment_variables:
+    environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'PreProduction'
       AWS_PROFILE: 'test'
@@ -64,10 +64,7 @@ pipelines:
 # service-multiplier-preproduction.yml
   "service-multiplier-preproduction":
     group: group1
-    environment_variables:
-      DEPLOYMENT: testing
-      FOO: bar
-      << : *preproduction
+    << : *preproduction
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
