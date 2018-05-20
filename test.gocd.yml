@@ -75,6 +75,7 @@ pipelines:
        destination: dir-prod
       service-multiplier:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
+       destination: dir-prod       
     template: test-template1
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #../pipeline/service-multiplier/uat-murray.yml                       +
@@ -92,8 +93,9 @@ pipelines:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
        branch: feature12
        destination: dir-murray     
-      service-multiplier:
-       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
+      service-multiplier:      
+       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
+       destination: dir-murray
     template: test-template1
   #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   #../pipeline/service-multiplier/uat-yarra.yml                       +
@@ -112,5 +114,6 @@ pipelines:
        branch: feature12
        destination: dir-yarra
       service-multiplier:
-       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
+       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
+       destination: dir-yarra
     template: test-template1
