@@ -72,7 +72,7 @@ pipelines:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
        branch: feature12
-       destination: dir
+       destination: dir-prod
       service-multiplier:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
     template: test-template1
@@ -91,7 +91,7 @@ pipelines:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
        branch: feature12
-       destination: dir       
+       destination: dir-murray     
       service-multiplier:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
     template: test-template1
@@ -110,7 +110,7 @@ pipelines:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
        branch: feature12
-       destination: dir
+       destination: dir-yarra
       service-multiplier:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
     template: test-template1
