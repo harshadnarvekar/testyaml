@@ -78,8 +78,7 @@ pipelines:
 #../pipeline/service-multiplier/uat-murray.yml                       +
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# service-multiplier-murray.yml
-pipelines:
+  # service-multiplier-murray.yml
   "service-multiplier-murray":
     group: group1
     environment_variables:
@@ -92,11 +91,11 @@ pipelines:
       service-multiplier:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
     template: test-template1
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#../pipeline/service-multiplier/uat-yarra.yml                       +
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  #../pipeline/service-multiplier/uat-yarra.yml                       +
+  #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-pipelines:
+  # service-multiplier-yarra.yml
   "service-multiplier-yarra":
     group: group1
     environment_variables:
