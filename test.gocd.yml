@@ -21,7 +21,7 @@ common:
 #=========================================================
 environments:
   uat-yarra:  &uat-yarra #  UAT Yarra
-    environment_variables:
+    # environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'UAT-Yarra'
       AWS_PROFILE: 'test'
@@ -58,7 +58,27 @@ environments:
       AWS_PROFILE: 'test'
 pipelines:
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#../pipeline/service-multiplier/production.yml                       +
+#../pipeline/service-multiplier/preproduction.yaml                       +
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# service-multiplier-preproduction.yml
+  "service-multiplier-preproduction":
+    group: group1
+    environment_variables:
+      DEPLOYMENT: testing
+      FOO: bar
+      << : *preproduction
+    materials:
+      Deployment:
+       git: git@github.tabcorp.com.au:TabDigital/deployment.git
+       branch: master
+       destination: dir-preproduction1
+      service-multiplier:
+       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
+       destination: dir-preproduction2     
+    template: test-template1
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#../pipeline/service-multiplier/production.yaml                       +
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # service-multiplier-production.yml
@@ -78,10 +98,10 @@ pipelines:
        destination: dir-prod2     
     template: test-template1
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#../pipeline/service-multiplier/uat-murray.yml                       +
+#../pipeline/service-multiplier/uat-murray.yaml                       +
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# service-multiplier-murray.yml
+# service-multiplier-yarra.yml
   "service-multiplier-murray":
     group: group1
     environment_variables:
@@ -97,24 +117,23 @@ pipelines:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
        destination: dir-murray2
     template: test-template1
- #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#../pipeline/service-multiplier/uat-yarra.yml                       +
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#../pipeline/service-multiplier/uat-yarra.yaml                       +
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# service-multiplier-preprod.yml
-  "service-multiplier-preprod":
+# service-multiplier-yarra.yml
+  "service-multiplier-yarra":
     group: group1
     environment_variables:
       DEPLOYMENT: testing
       FOO: bar
-      << : *preproduction
+      << : *uat-yarra
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
        branch: master
-       destination: dir-preprod1     
+       destination: dir-yarra1     
       service-multiplier:      
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
-       destination: dir-preprod2
+       destination: dir-yarra2
     template: test-template1
-    
