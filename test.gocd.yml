@@ -97,3 +97,24 @@ pipelines:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
        destination: dir-murray2
     template: test-template1
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#../pipeline/service-multiplier/uat-yarra.yml                       +
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  # service-multiplier-yarra.yml
+  "service-multiplier-yarra":
+    group: group1
+    environment_variables:
+      DEPLOYMENT: testing
+      FOO: bar
+      << : *uat-yarra
+    materials:
+      Deployment:
+       git: git@github.tabcorp.com.au:TabDigital/deployment.git
+       branch: feature12
+       destination: dir-yarra1     
+      service-multiplier:      
+       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
+       destination: dir-yarra2
+    template: test-template1
