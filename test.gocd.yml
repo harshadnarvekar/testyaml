@@ -78,7 +78,7 @@ pipelines:
 #../pipeline/service-multiplier/uat-murray.yml                       +
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# service-multiplier-yarra.yml
+# service-multiplier-murray.yml
 pipelines:
   service-multiplier-murray:
     group: group1
