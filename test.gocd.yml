@@ -96,7 +96,6 @@ pipelines:
 #../pipeline/service-multiplier/uat-yarra.yml                       +
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# service-multiplier-yarra.yml
 pipelines:
   service-multiplier-yarra:
     group: group1
