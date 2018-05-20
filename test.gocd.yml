@@ -62,7 +62,7 @@ environments:
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # service-multiplier-production.yml
-production-pipeline: &production-pipeline
+multiplier-production: &multiplier-production
   "service-multiplier-production":
     group: group1
     environment_variables:
@@ -83,7 +83,7 @@ production-pipeline: &production-pipeline
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # service-multiplier-yarra.yml
-murray-pipeline: &murray-pipeline
+multiplier-murray: &multiplier-murray
   "service-multiplier-murray":
     group: group1
     environment_variables:
@@ -105,5 +105,5 @@ murray-pipeline: &murray-pipeline
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 pipelines:
-  << : *production-pipeline
-  << : *murray-pipeline
+  << : *multiplier-murray
+  << : *multiplier-production
