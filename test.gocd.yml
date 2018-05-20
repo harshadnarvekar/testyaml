@@ -101,7 +101,6 @@ pipelines:
   #../pipeline/service-multiplier/uat-yarra.yml                       +
   #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  # service-multiplier-yarra.yml
   "service-multiplier-yarra":
     group: group1
     environment_variables:
