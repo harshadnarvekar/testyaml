@@ -44,7 +44,7 @@ environments:
       ENVIRONMENT: 'Production'
       AWS_PROFILE: 'test'
 #=========================================================
-  tools:
+  tools: &tools
     # environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'Tools'
@@ -57,12 +57,19 @@ environments:
       ENVIRONMENT: 'ProductionDR'
       AWS_PROFILE: 'test'
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#../pipeline/service-multiplier/pipelines.yml                       +
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+pipelines:
+  <<: *production-pipeline
+  <<: *murray-pipeline
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #../pipeline/service-multiplier/production.yml                       +
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # service-multiplier-production.yml
-pipelines:
-  "service-multiplier-production":
+production-pipeline: &production-pipeline
+  service-multiplier-production:
     group: group1
     environment_variables:
       DEPLOYMENT: testing
@@ -81,8 +88,9 @@ pipelines:
 #../pipeline/service-multiplier/uat-murray.yml                       +
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  # service-multiplier-murray.yml
-  "service-multiplier-murray":
+# service-multiplier-yarra.yml
+murray-pipeline: &murray-pipeline
+  service-multiplier-murray:
     group: group1
     environment_variables:
       DEPLOYMENT: testing
@@ -97,3 +105,4 @@ pipelines:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
        destination: dir-murray2
     template: test-template1
+    
