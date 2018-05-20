@@ -107,7 +107,7 @@ pipelines:
     environment_variables:
       DEPLOYMENT: testing
       FOO: bar
-      << : *uat-preproduction
+      << : *preproduction
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
