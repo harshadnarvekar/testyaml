@@ -105,5 +105,5 @@ murray-pipeline: &murray-pipeline
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 pipelines:
-  <<: *production-pipeline
-  <<: *murray-pipeline
+  << : *production-pipeline
+  << : *murray-pipeline
