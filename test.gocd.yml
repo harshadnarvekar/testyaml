@@ -1,0 +1,112 @@
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#../environments/environments.yaml                       +
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+format_version: 2
+#=========================================================
+# Common environment variables
+#=========================================================
+common:
+  default_region: &region
+    REGION: 'ap-southeast-2'
+  docker_repo: &docker_repo
+    DOCKER_REPO: 'docker-env.artifacts.tabdigital.com.au'
+  default_environment_variables: &default_environment_variables
+    <<: *docker_repo
+    <<: *region
+
+#=========================================================
+#  GoCD Environment definitions
+#=========================================================
+environments:
+  uat-yarra:  &uat-yarra #  UAT Yarra
+    environment_variables:
+      <<: *default_environment_variables
+      ENVIRONMENT: 'UAT-Yarra'
+      AWS_PROFILE: 'test'
+#=========================================================
+  uat-murray: &uat-murray  # UAT Murray
+    # environment_variables:
+      <<: *default_environment_variables
+      ENVIRONMENT: 'UAT-Murray'
+      AWS_PROFILE: 'test'
+#=========================================================
+  preproduction: &preproduction #  PreProduction
+    # environment_variables:
+      <<: *default_environment_variables
+      ENVIRONMENT: 'PreProduction'
+      AWS_PROFILE: 'test'
+#=========================================================
+  production:
+    # environment_variables:
+      <<: *default_environment_variables
+      ENVIRONMENT: 'Production'
+      AWS_PROFILE: 'test'
+#=========================================================
+  tools:
+    # environment_variables:
+      <<: *default_environment_variables
+      ENVIRONMENT: 'Tools'
+      AWS_PROFILE: 'test'
+#=========================================================
+  productiondr:
+    # environment_variables:
+      <<: *docker_repo
+      REGION: 'ap-northeast-1'
+      ENVIRONMENT: 'ProductionDR'
+      AWS_PROFILE: 'test'
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#../pipeline/service-multiplier/production.yml                       +
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# service-multiplier-production.yml
+pipelines:
+  service-multiplier-production:
+    group: group1
+    environment_variables:
+      DEPLOYMENT: testing
+      FOO: bar
+      << : *production
+    materials:
+      Deployment:
+       git: git@github.tabcorp.com.au:TabDigital/deployment.git
+      service-multiplier:
+       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
+    template: test-template1
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#../pipeline/service-multiplier/uat-murray.yml                       +
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# service-multiplier-yarra.yml
+pipelines:
+  service-multiplier-murray:
+    group: group1
+    environment_variables:
+      DEPLOYMENT: testing
+      FOO: bar
+      << : *uat-murray
+    materials:
+      Deployment:
+       git: git@github.tabcorp.com.au:TabDigital/deployment.git
+      service-multiplier:
+       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
+    template: test-template1
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#../pipeline/service-multiplier/uat-yarra.yml                       +
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# service-multiplier-murray.yml
+pipelines:
+  service-multiplier-yarra:
+    group: group1
+    environment_variables:
+      DEPLOYMENT: testing
+      FOO: bar
+      << : *uat-yarra
+    materials:
+      Deployment:
+       git: git@github.tabcorp.com.au:TabDigital/deployment.git
+      service-multiplier:
+       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
+    template: test-template1
