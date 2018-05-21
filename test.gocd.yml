@@ -63,7 +63,7 @@ pipelines:
 
 # service-multiplier-preproduction.yml
   "service-multiplier-preproduction":
-    group: group1
+    group: PreProduction
     << : *preproduction
     materials:
       Deployment:
@@ -80,7 +80,7 @@ pipelines:
 
 # service-multiplier-production.yml
   "service-multiplier-production":
-    group: group1
+    group: PreProduction
     << : *production
     materials:
       Deployment:
@@ -97,7 +97,7 @@ pipelines:
 
 # service-multiplier-yarra.yml
   "service-multiplier-murray":
-    group: group1
+    group: UAT-Murray
     << : *uat-murray
     materials:
       Deployment:
@@ -114,7 +114,7 @@ pipelines:
 
 # service-multiplier-yarra.yml
   "service-multiplier-yarra":
-    group: group1
+    group: UAT-Yarra
     << : *uat-yarra
     materials:
       Deployment:
