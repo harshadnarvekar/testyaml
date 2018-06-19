@@ -20,31 +20,31 @@ common:
 #  GoCD Environment definitions
 #=========================================================
 environments:
-  uat-yarra: #  UAT Yarra
+  uat-yarra: &uat-yarra #  UAT Yarra
     environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'UAT-Yarra'
       AWS_PROFILE: 'test'
 #=========================================================
-  uat-murray: # UAT Murray
+  uat-murray: &uat-murray # UAT Murray
     environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'UAT-Murray'
       AWS_PROFILE: 'test'
 #=========================================================
-  preproduction: #  PreProduction
+  preproduction: &preproduction #  PreProduction
     environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'PreProduction'
       AWS_PROFILE: 'test'
 #=========================================================
-  production: #  Production
+  production: &production #  Production
     environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'Production'
       AWS_PROFILE: 'test'
 #=========================================================
-  tools-nonproduction: # tools-nonproduction
+  tools-nonproduction: &tools-nonproduction # tools-nonproduction
     environment_variables:
       <<: *default_environment_variables
       environment: 'Tools-Services-NonProduction'
@@ -52,7 +52,7 @@ environments:
       CiServer:    'go.tabdigital.com.au'    
       region:      'ap-southeast-2' 
 #=========================================================
-  tools-production: # tools-production
+  tools-production: &tools-production # tools-production
     environment_variables:
       <<: *default_environment_variables
       environment: 'Tools-Services-Production'
