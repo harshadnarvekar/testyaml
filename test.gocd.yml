@@ -20,119 +20,60 @@ common:
 #  GoCD Environment definitions
 #=========================================================
 environments:
-  uat-yarra:  &uat-yarra #  UAT Yarra
+  uat-yarra: #  UAT Yarra
     environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'UAT-Yarra'
       AWS_PROFILE: 'test'
 #=========================================================
-  uat-murray: &uat-murray  # UAT Murray
+  uat-murray: # UAT Murray
     environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'UAT-Murray'
       AWS_PROFILE: 'test'
 #=========================================================
-  preproduction: &preproduction #  PreProduction
+  preproduction: #  PreProduction
     environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'PreProduction'
       AWS_PROFILE: 'test'
 #=========================================================
-  production: &production
+  production: #  Production
     environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'Production'
       AWS_PROFILE: 'test'
 #=========================================================
-  tools: &tools
+  tools-nonproduction: # tools-nonproduction
     environment_variables:
       <<: *default_environment_variables
-      ENVIRONMENT: 'Tools'
-      AWS_PROFILE: 'test'
+      environment: 'Tools-Services-NonProduction'
+      aws_profile: 'tools'
+      CiServer:    'go.tabdigital.com.au'    
+      region:      'ap-southeast-2' 
 #=========================================================
-  productiondr: &productiondr
+  tools-production: # tools-production
+    environment_variables:
+      <<: *default_environment_variables
+      environment: 'Tools-Services-Production'
+      aws_profile: 'tools'
+      CiServer:    'go.tabdigital.com.au'    
+      region:      'ap-southeast-2' 
+#=========================================================
+  productiondr: # productiondr
     environment_variables:
       <<: *docker_repo
       REGION: 'ap-northeast-1'
       ENVIRONMENT: 'ProductionDR'
       AWS_PROFILE: 'test'
-pipelines:
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#../pipeline/service-multiplier/preproduction.yaml                       +
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# service-multiplier-preproduction.yml
-  "service-multiplier-preproduction":
-    group: PreProduction
-    << : *preproduction
-    materials:
-      Deployment:
-       git: git@github.tabcorp.com.au:TabDigital/deployment.git
-       branch: master
-       destination: dir-preproduction1
-      service-multiplier:
-       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
-       destination: dir-preproduction2     
-    template: test-template1
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#../pipeline/service-multiplier/production.yaml                       +
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# service-multiplier-production.yml
-  "service-multiplier-production":
-    group: PreProduction
-    << : *production
-    materials:
-      Deployment:
-       git: git@github.tabcorp.com.au:TabDigital/deployment.git
-       branch: master
-       destination: dir-prod1
-      service-multiplier:
-       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git 
-       destination: dir-prod2     
-    template: test-template1
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#../pipeline/service-multiplier/uat-murray.yaml                       +
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# service-multiplier-yarra.yml
-  "service-multiplier-murray":
-    group: UAT-Murray
-    << : *uat-murray
-    materials:
-      Deployment:
-       git: git@github.tabcorp.com.au:TabDigital/deployment.git
-       branch: master
-       destination: dir-murray1     
-      service-multiplier:      
-       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
-       destination: dir-murray2
-    template: test-template1
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#../pipeline/service-multiplier/uat-yarra.yaml                       +
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-# service-multiplier-yarra.yml
-  "service-multiplier-yarra":
-    group: UAT-Yarra
-    << : *uat-yarra
-    materials:
-      Deployment:
-       git: git@github.tabcorp.com.au:TabDigital/deployment.git
-       branch: master
-       destination: dir-yarra1     
-      service-multiplier:      
-       git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
-       destination: dir-yarra2
-    template: test-template1
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #../pipeline/Go-Agent-EC2/production.yaml                       +
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # go-Agent-EC2.yml
   "go-Agent-EC2":
-    group: tools
-    << : *tools
+    group: tools-production
+    << : *tools-production
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
