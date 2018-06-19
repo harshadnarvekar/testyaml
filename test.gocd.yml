@@ -125,3 +125,19 @@ pipelines:
        git: git@github.tabcorp.com.au:TabDigital/deployment-trigger.git
        destination: dir-yarra2
     template: test-template1
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#../pipeline/Go-Agent-EC2/production.yaml                       +
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# go-Agent-EC2.yml
+  "go-Agent-EC2":
+    group: tools
+    << : *tools
+    materials:
+      Deployment:
+       git: git@github.tabcorp.com.au:TabDigital/deployment.git
+       branch: master
+       destination: deployment
+    parameters: # list of parameters that can be configured for a pipeline
+      app_home: tools/apps/go-agents-ec2   
+    template: DeployEC2_CI
