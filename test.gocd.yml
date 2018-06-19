@@ -50,7 +50,6 @@ environments:
       environment: 'Tools-Services-NonProduction'
       aws_profile: 'tools'
       CiServer:    'go.tabdigital.com.au'    
-      region:      'ap-southeast-2' 
 #=========================================================
   tools-production: &tools-production # tools-production
     environment_variables:
@@ -58,7 +57,6 @@ environments:
       environment: 'Tools-Services-Production'
       aws_profile: 'tools'
       CiServer:    'go.tabdigital.com.au'    
-      region:      'ap-southeast-2' 
 #=========================================================
   productiondr: # productiondr
     environment_variables:
