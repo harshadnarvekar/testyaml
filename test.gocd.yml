@@ -72,7 +72,7 @@ environments:
 
 # go-Agent-EC2.yml
   "go-Agent-EC2":
-    group: tools-production
+    group: tools
     << : *tools-production
     materials:
       Deployment:
