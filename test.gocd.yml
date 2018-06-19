@@ -43,7 +43,7 @@ environments:
       ENVIRONMENT: 'Production'
       AWS_PROFILE: 'test'
 #=========================================================
-  tools: &tools
+  tools-production: &tools-production
     environment_variables:
       <<: *default_environment_variables
       ENVIRONMENT: 'Tools'
@@ -131,7 +131,7 @@ pipelines:
 # go-Agent-EC2.yml
   "go-Agent-EC2":
     group: tools-production
-    << : *tools
+    << : *tools-production
     materials:
       Deployment:
        git: git@github.tabcorp.com.au:TabDigital/deployment.git
