@@ -50,7 +50,7 @@ environments:
       <<: *default_environment_variables
       ENVIRONMENT: 'Tools-Production'
       AWS_PROFILE: 'test'
-   pipelines:
+    pipelines:
       - go-Agent-EC2
 #=========================================================
   productiondr:
